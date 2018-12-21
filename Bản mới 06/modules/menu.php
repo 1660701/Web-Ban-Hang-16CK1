@@ -6,6 +6,7 @@
                 <li><a href="index.php?xem=dangnhaptk&id=".$_SESSION["dangnhap"]>Đăng nhập</a></li>
                 <li><a href="index.php?xem=dangkitk&id=1">Đăng kí</a></li>
                 <li><a href="index.php?xem=thongtinnguoidung&id=1">Thông tin cá nhân</a></li>
+                
                 <form action="modules/quanliloaisanpham/xuly.php" method="post" enctype="multipart/form-data">
                     <table width="100%">
                         <tr>

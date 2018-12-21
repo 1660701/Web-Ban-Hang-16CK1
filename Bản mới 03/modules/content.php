@@ -46,6 +46,17 @@
                     echo $sanpham->drawChiTietSPFooter();
 
                 }
+                elseif(isset($_POST['search']))
+                {
+                    include('modules/right/Search.php');
+                    $sanpham = new Search($conn);
+                    $sp = $sanpham->ChiTietSanPhamS($id);
+                    
+                    echo $sanpham->drawChiTiestSPHeaderS();
+                    echo $sanpham->drawChiTietSPS($sp);
+                    echo $sanpham->drawChiTietSPFooterS();
+
+                }
                 else if ($tam == 'sanphamcungloai')
                 {
                     

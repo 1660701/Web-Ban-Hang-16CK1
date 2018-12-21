@@ -2,7 +2,7 @@
     $tenmaychu='localhost';
     $tentaikhoan='root';
     $pass='';
-    $csdl='web_1';
+    $csdl='web_01';
 
     $conn = mysqli_connect($tenmaychu,$tentaikhoan,$pass,$csdl); 
     //$conn = new mysqli($tenmaychu,$tentaikhoan,$pass,$csdl);

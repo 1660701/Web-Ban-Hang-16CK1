@@ -185,7 +185,7 @@ SANPHAMF;
             <p>Giá gốc:<del>$sanpham[GiaGoc]</p></del>
             <p>Số lượt xem: $sanpham[LuotXem]</p>
             <p>Tình trạng: $sanpham[TinhTrang]</p>
-
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
         <li>         
 SANPHAM;
         

@@ -64,6 +64,12 @@
                     echo $sanpham->drawNamSPCungNSXFooter();
 
                 }
+                elseif($tam=='giohang')
+                {
+                    
+                    include('modules/right/GioHang.php');
+
+                }
                 else if ($tam == 'sanphamcungloai')
                 {
                     
