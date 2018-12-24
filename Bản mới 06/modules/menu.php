@@ -7,15 +7,13 @@
                 <li><a href="index.php?xem=dangkitk&id=1">Đăng kí</a></li>
                 <li><a href="index.php?xem=thongtinnguoidung&id=1">Thông tin cá nhân</a></li>
                 
-                <form action="modules/quanliloaisanpham/xuly.php" method="post" enctype="multipart/form-data">
-                    <table width="100%">
-                        <tr>
-                            <td><input type="text" name="ID"></td>
-                        </tr>
-                        <tr>
-                            <td><div><input type="submit" name="them" id="them" value="Tìm kiếm"></div></td>
-                        </tr>
-                    </table>
+                <form action="index.php" method="post" enctype="multipart/form-data">
+                <div class="TimKiem">
+                <input type="text" id="Ftimkiem" name="Ftimkiem" />
+                <input type="submit" id="Btimkiem" name="search" value="Search" placeholder="Search..." />
+                
+                </div>
                 </form>
+                <li><a href="index.php?xem=giohang&id=1" ><input type="submit" name="giohang" id="giohang" value="giỏ hàng"  ></a></li>
             </ul>
         </div>
