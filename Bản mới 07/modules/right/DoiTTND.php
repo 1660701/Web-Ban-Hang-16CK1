@@ -27,6 +27,10 @@
     $sql="select * from nguoidung where UserName='$_GET[id]'";
     $run=mysqli_query($conn,$sql);
     $dong=mysqli_fetch_array($run);
+
+    
+
+        
 ?>
 <form action="" method="post" enctype="multipart/form-data">
 <center>
@@ -41,7 +45,16 @@
     </tr>
     <tr>
         <td>Địa chỉ </td>
-        <td><input type="text" name="diachi" size="70" value="<?php echo $dong['DiaChi'] ?>"></td>
+        <td><input type="text" name="diachi" size="70" value="<?php 
+         $diachi= $dong['DiaChi'];
+         $_SESSION['diachi']= $diachi;
+        
+        
+        echo  $_SESSION['diachi'] ?>">
+        
+        
+        </td>
+       
     </tr>
     <tr>
         <td>Email</td>

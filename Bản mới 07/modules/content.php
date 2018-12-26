@@ -188,6 +188,12 @@
                 {
                     include('modules/right/thongbao.php');
                 }
+                else if($tam=='dathang')
+                {
+                
+                   // mysqli_query($conn,"insert into diachinhanhang (NguoiDungID,TenNguoiNhan,SoDienThoai,DiaChiGiaoHang) values (1,$_SESSION['dangnhap'],$_SESSION['sodienthoai'],$_SESSION['diachi'])";
+                    //echo 'Khong biet dat duoc hay khong';
+                }
                 else
                 {
                     include('modules/right/trangchu.php');

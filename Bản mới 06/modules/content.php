@@ -70,12 +70,8 @@
                     include('modules/right/GioHang.php');
 
                 }
-                else if($tam=='thanhtoan')
-                {
-                    
-                    include('modules/right/thanhtoan.php');
-
-                }
+                
+               
                 else if ($tam == 'sanphamcungloai')
                 {
                     
@@ -174,6 +170,10 @@
                 else if(isset($_POST['search']))
                 {
                     include('modules/right/search.php');
+                }
+                else if(isset($_POST['DatHang']))
+                {
+                    include('modules/right/thanhtoan.php');
                 }
                 else if($tam=='dangkitk')
                 {

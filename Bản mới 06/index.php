@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vn">
 <head>
@@ -9,7 +10,9 @@
     <title>Cửa hàng quần áo</title>
 </head>
 <body>
-    
+<?php
+session_start();
+?>
     <div class="wrapper">
         <?php 
             include('modules/header.php');

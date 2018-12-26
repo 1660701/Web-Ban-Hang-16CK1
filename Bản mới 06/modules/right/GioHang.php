@@ -1,5 +1,6 @@
+<form action="index.php?xem=thanhtoan&id=1" methob="post" >
 <?php
-   session_start();
+
   if(isset($_GET['id']) && !empty($_GET['id']))
     {
         $id=$_GET['id'];
@@ -59,6 +60,8 @@
         if($thanhtien!=0)
           
              echo 'Tổng Tiền :'.$thanhtien.' VNĐ';
+             //echo '<p>Tổng Tiền </p><input type="text" name="ThanhTien" value="'.$thanhtien.'" >';
 
 ?>
-<p style="float:right"><a href="index.php?xem=thanhtoan&id=1"><input type="submit" value="Đặt Hàng"> </a></p>
+<p style="float:right"><input type="submit" value="dathang" name="DatHang"> </a></p>
+</form>

@@ -29,11 +29,21 @@
     </tr>
     <tr>
         <td>Số điện thoại</td>
-        <td><?php echo $dong['SoDienThoai'] ?></td>
+        <td><?php echo $dong['SoDienThoai'];
+         $_SESSION['sodienthoai']=$dong['SoDienThoai'];
+        ?></td>
     </tr>
     <tr>
         <td>Địa chỉ</td>
-        <td><?php echo $dong['DiaChi'] ?></td>
+        <td><?php 
+        echo $dong['DiaChi'];
+
+        $_SESSION['diachi']=$dong['DiaChi'];
+        
+          
+        
+        
+        ?></td>
     </tr><tr>
         <td>Email</td>
         <td><?php echo $dong['Email'] ?></td>

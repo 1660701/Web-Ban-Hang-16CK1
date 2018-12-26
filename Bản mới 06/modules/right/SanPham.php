@@ -35,7 +35,7 @@ class SanPham
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
             <p style="color:#F00;text-align:center">Chi tiết</p>
-            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
             </a>
         </li>       
@@ -89,7 +89,7 @@ SANPHAMF;
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
             <p style="color:#F00;text-align:center">Chi tiết</p>
-            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
             </a>
         </li>       
@@ -189,7 +189,7 @@ SANPHAMF;
             <p>Giá gốc:<del>$sanpham[GiaGoc]</p></del>
             <p>Số lượt xem: $sanpham[LuotXem]</p>
             <p>Tình trạng: $sanpham[TinhTrang]</p>
-            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang value="Mua hàng"></a>
         <li>         
 SANPHAM;
         
@@ -224,7 +224,7 @@ public function drawSanPhamCungNSX($sanpham)
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
         <p style="color:#F00;text-align:center">Chi tiết</p>
-        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
         </a>
     </li>       
@@ -280,7 +280,7 @@ public function drawTop10New($sanpham)
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
         <p style="color:#F00;text-align:center">Chi tiết</p>
-        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
         </a>
     </li>       
@@ -336,7 +336,7 @@ public function drawTop10NSelling($sanpham)
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
         <p style="color:#F00;text-align:center">Chi tiết</p>
-        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang value="Mua hàng"></a>
 
         </a>
     </li>       
@@ -391,7 +391,7 @@ public function drawTop10View($sanpham)
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
         <p style="color:#F00;text-align:center">Chi tiết</p>
-        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+        <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
         </a>
     </li>       
@@ -446,7 +446,7 @@ public function NamSanPhamCungLoai($id_sanpham)
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
             <p style="color:#F00;text-align:center">Chi tiết</p>
-            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
             </a>
         </li>       
@@ -502,7 +502,7 @@ SANPHAMF;
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
             <p style="color:#F00;text-align:center">Chi tiết</p>
-            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" value="Mua hàng"></a>
+            <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input type="submit" name="muahang" value="Mua hàng"></a>
 
             </a>
         </li>       

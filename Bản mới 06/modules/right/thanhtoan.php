@@ -1,14 +1,8 @@
-<<p>thanh toán
-</p>>
+<p>giỏ hàng</p>
 <?php
- session_start();
- if(!isset($_SESSION['dangnhap']))
- {
-     header('location:dangnhap.php');
- }
- else
- {
-     header('location:thanhtoan.php');
- }
-
+    if(isset($_POST['DatHang']) )
+    {
+        $thanh_tien= $_POST['ThanhTien'];
+        echo $thanh_tien;
+    }
 ?>
