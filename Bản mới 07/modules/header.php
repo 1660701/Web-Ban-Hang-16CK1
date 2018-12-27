@@ -5,7 +5,7 @@
             <?php
             if(isset($_SESSION['dangnhap']))
             {
-                echo 'Xin chào: '.$_SESSION['dangnhap'];
+                echo '<div class="dropdown">Xin chào: '.$_SESSION['dangnhap'].'<a class="dropdown-content" href="index.php?xem=logout&id=1">Đăng xuất</a></div>';
             }
             else
             {

@@ -1,72 +1,115 @@
 <?php
-//vẫn là isset với $_GET là kiểm tra tồn tại và lấy dữ liệu sau id=
-//empty là bỏ trống !empty là tồn tại 
+    
+
   if(isset($_GET['id']) && !empty($_GET['id']))
     {
+        
         $id=$_GET['id'];
-        //Nếu đường link dẫn tới đây thì cái sản phẩm có id trên đường link đó sẽ được thêm 1sp vào giỏ hàng
         @$_SESSION['cart_'.$id]+=1;
-    }
+        
+       
+        
+       
+    
        
         if(isset($_GET['them']))
         {
-            //Giống như trên
             $_SESSION['cart_'.$_GET['them']]+=1;
+            
             header('location:index.php?xem=giohang&id=1');
         }
         if(isset($_GET['tru']))
         {
-            //bỏ bớt 1 sp trong giỏ hàng
             $_SESSION['cart_'.$_GET['tru']]--;
             header('location:index.php?xem=giohang&id=1');
         }
         if(isset($_GET['delete']))
         {
-            //xóa luôn sản phẩm trong giỏ hàng theo cái id sp
             $_SESSION['cart_'.$_GET['delete']]=0;
             header('location:index.php?xem=giohang&id='.$id.'');
         }
-        //Tạo giá trị mặc định khi giỏ hàng chưa có sp
+
         $thanhtien =0;
         $tongtien=0;
-        //chạy vòng lặp và gán giá trị
+        $tongsoluong=0;
+        echo '<table>
+        <tr>
+        <th>Tên Sản Phẩm</th>
+        <th>Số Lượng</th>
+        <th>Giá</th>
+        <th>Tổng</th>
+        <th>Xóa Sản Phẩm</th>
+        </tr>
+        </table>';
+        $count=0;
         foreach($_SESSION as $name => $value)
         {
-            //Kiểm tra điều kiện để thực hiện cho phù hợp
+            
             if($value >0)
             {
-                //substr là lấy số kí tự trong chuỗi ra
                 if(substr($name,0,5)=='cart_')
-                {
-                    //strlen là đếm số kí tự
+                {  
+                    
                     $len= strlen($name)-5;
                 
                     $id=substr($name,5,$len);
                     $id;
-                    //mấy câu lệnh quen thuộc đã nói ở các phần khác
+                
                     $sqldetail = "select * from sanpham where MaSP='$id'";
                     $result= mysqli_query($conn,$sqldetail);
+                   
                      
                     while($dong=mysqli_fetch_array($result))
                     {
-                        // Tính giá trị của tất cả sản phẩm được đưa vào giỏ hàng
-                        $tongtien=$dong['Gia']*$value;
 
-                        echo '<br />'.$dong['TenSP'].' '.$value.'x'.$dong['Gia'].' tổng '.$tongtien.'<br/>
+                        $tongtien=$dong['Gia']*$value;
+                        $count=count($dong['TenSP']); 
+                        $tongsoluong=$tongsoluong+$value;
+                        
+               
+                        echo '<table>
+                        
+                        <tr>
+                        <td>'.$dong['TenSP'].'</td>
+                        
+                        <td><a href="index.php?xem=giohang&id=1&tru='.$id.'">[-]</a>'
+                        .$value.'
                         <a href="index.php?xem=giohang&id=1&them='.$id.'">[+]</a>
-                        <a href="index.php?xem=giohang&id=1&tru='.$id.'">[-]</a>
-                        <a href="index.php?xem=giohang&id=1&delete='.$id.'">[delete]</a><br/>';
+                        </td>
+                        <td>'.$dong['Gia'].' </td> 
+                        <td>'.$tongtien.'</td>
+                       
+                        <td>
+                        <a href="index.php?xem=giohang&id=1&delete='.$id.'">[delete]</a></td>
+                        </tr>
+                        </table>';
+                        for($i=0;$i<count($dong['TenSP']);$i++)
+                        {
+                            $_SESSION['giohang'][$i]['id']=$id;
+                            $_SESSION['giohang'][$i]['soluong']=$value;
+                            $_SESSION['giohang'][$i]['gia']=$dong['Gia'];
+                            
+
+                        }
                     }
                 }
                 $thanhtien+=$tongtien;
-            
             }
                           
             
         }
+       
         if($thanhtien!=0)
-          
-             echo 'Tổng Tiền :'.$thanhtien.' VNĐ';
+            
+             echo '<table><tr><span class="ttt">Tổng Tiền :'.$thanhtien.' VNĐ</span></tr> </table>';
+             $_SESSION["tongtien"]=$thanhtien;
+             $_SESSION["sodong"]=$count;
+        
+             $_SESSION["soluong"]=$tongsoluong;
+            
+           
+    }
 ?>
-<a href="index.php?xem=thanhtoan&id=<?php echo @$_SESSION['dangnhap']?>">
-<input class="button" type="button" name="thanhtoan" id="thanhtoan" value="Tiến hành thanh toán"></a>
+<span style="float:right;"><a href="index.php?xem=thanhtoan&id=<?php echo @$_SESSION['dangnhap']?>">
+<input class="button" type="button" name="thanhtoan" id="thanhtoan" value="Tiến hành thanh toán"></td></a>
+</span>

@@ -34,13 +34,14 @@ class SanPham
             <p class="Ten">$sanpham[TenSP]</p>
             <p style="color:#F00;"><del>$sanpham[GiaGoc] VNĐ</del></p>
             <p style="color:#F00;">$sanpham[Gia] VNĐ</p>
-            <p style="color:#F00;text-align:center">Chi tiết</p>
+            <p style="color:#4CAF50;text-align:center">Chi tiết</p>
             <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
             </a>
         </li>       
             
 SANPHAM;
         return $html;
+        
     }
     public function drawTatCaSanPhamHeader() 
     {
@@ -87,7 +88,7 @@ SANPHAMF;
             <p class="Ten">$sanpham[TenSP]</p>
             <p style="color:#F00;"><del>$sanpham[GiaGoc] VNĐ</del></p>
             <p style="color:#F00;">$sanpham[Gia] VNĐ</p>
-            <p style="color:#F00;text-align:center">Chi tiết</p>
+            <p style="color:#4CAF50;text-align:center">Chi tiết</p>
             <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
             </a>
         </li>       
@@ -179,15 +180,27 @@ SANPHAMF;
             }
             return $kq;
     }
+    public function DemLuotXem($id_sanpham)
+    {
+        $luotxem=0;
+       
+         
+            $luotxem = $luotxem + 1;
+            
+
+        return $luotxem;
+    }
     public function drawChiTietSP($sanpham)
     {   $loaiSP=$this->TimLoaiSP($sanpham['LoaiSP']);
         $nsx=$this->TimNSX($sanpham['NhaSanXuatID']);
         $hinhanh=$this->HinhAnh($sanpham['MaSP']);
         $tt=$this->KTTinhTrang($sanpham['TinhTrang']);
-
+        $sl=$sanpham['LuotXem'];
+        $sl=$sl+ @$_SESSION['chitietluotxem'];
         $html =<<<SANPHAM
         <li>
         <p>
+         
             <p><img src=$hinhanh width='150px'></p>
             <p class="Ten">Tên sản phẩm: $sanpham[TenSP]</p>
             <p>Loại sản phẩm:  $loaiSP[Ten]</p>
@@ -197,13 +210,18 @@ SANPHAMF;
             <p>Số lượng còn: $sanpham[SoLuong]</p>
             <del><p style="color:#F00;">Giá gốc:<del>$sanpham[GiaGoc] VNĐ</p></del>
             <p style="color:#F00;">Giá sản phẩm: $sanpham[Gia] VNĐ</p>
-            <p>Số lượt xem: $sanpham[LuotXem]</p>
+            <p>Số lượt xem:$sl </p>
             <p>Tình trạng: $tt</p>
             <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
+
+           
         <li>         
 SANPHAM;
-        
+           // $sql="update  sanpham  set LuotXem= "$sl" where MaSP= $sanpham['MaSP']";
+            //$run=mysqli_query($conn,$sql);
         return $html;
+
+       
     }
 
 // SAN PHAM CUNG NSX
@@ -233,7 +251,7 @@ public function drawSanPhamCungNSX($sanpham)
         <p class="Ten">$sanpham[TenSP]</p>
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
-        <p style="color:#F00;text-align:center">Chi tiết</p>
+        <p style="color:#4CAF50;text-align:center">Chi tiết</p>
         <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
         </a>
     </li>       
@@ -288,7 +306,7 @@ public function drawTop10New($sanpham)
         <p class="Ten">$sanpham[TenSP]</p>
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
-        <p style="color:#F00;text-align:center">Chi tiết</p>
+        <p style="color:#4CAF50;text-align:center">Chi tiết</p>
         <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
         </a>
     </li>       
@@ -343,7 +361,7 @@ public function drawTop10NSelling($sanpham)
         <p class="Ten">$sanpham[TenSP]</p>
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
-        <p style="color:#F00;text-align:center">Chi tiết</p>
+        <p style="color:#4CAF50;text-align:center">Chi tiết</p>
         <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
         </a>
     </li>       
@@ -397,7 +415,7 @@ public function drawTop10View($sanpham)
         <p class="Ten">$sanpham[TenSP]</p>
         <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
         <p style="color:#F00;">$sanpham[Gia]</p>
-        <p style="color:#F00;text-align:center">Chi tiết</p>
+        <p style="color:#4CAF50;text-align:center">Chi tiết</p>
         <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
         </a>
     </li>       
@@ -451,7 +469,7 @@ public function NamSanPhamCungLoai($id_sanpham)
             <p class="Ten">$sanpham[TenSP]</p>
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
-            <p style="color:#F00;text-align:center">Chi tiết</p>
+            <p style="color:#4CAF50;text-align:center">Chi tiết</p>
             <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
             </a>
         </li>       
@@ -506,7 +524,7 @@ SANPHAMF;
             <p class="Ten">$sanpham[TenSP]</p>
             <p style="color:#F00;"><del>$sanpham[GiaGoc]</del></p>
             <p style="color:#F00;">$sanpham[Gia]</p>
-            <p style="color:#F00;text-align:center">Chi tiết</p>
+            <p style="color:#4CAF50;text-align:center">Chi tiết</p>
             <a href="index.php?xem=giohang&id=$sanpham[MaSP]"><input class="buttonmuahang" type="submit" name="giohang" id="giohang" value="Mua hàng" /></a>
             </a>
         </li>       

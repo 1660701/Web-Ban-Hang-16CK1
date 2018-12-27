@@ -6,6 +6,7 @@
         </div> 
 
         <div class="right">
+        
             <?php
                 if(isset($_GET['xem']) && isset($_GET['id']))
                 {
@@ -27,27 +28,35 @@
                     $listSanpham = $sanpham->TatCaSanPham();
 
                     echo $sanpham->drawTatCaSanPhamHeader();
-
+                 
                     foreach ($listSanpham as $sp) {
-                      
+
+                       
                         echo $sanpham->drawTatCaSanPham($sp);
                        
                     }
+                   
                     echo $sanpham->drawTatCaSanPhamFooter();
                 }
                 elseif($tam=='chitietsanpham')
                 {
                     include('modules/right/SanPham.php');
                     $sanpham = new SanPham($conn);
-                    $sp = $sanpham->ChiTietSanPham($id);
                     
+                    $sl1=0;
+                    $sp = $sanpham->ChiTietSanPham($id);
+                  
                     echo $sanpham->drawChiTiestSPHeader();
                     echo $sanpham->drawChiTietSP($sp);
                     echo $sanpham->drawChiTietSPFooter();
-                    
+                   
                     $listSanpham = $sanpham->NamSanPhamCungLoai($id);
                     echo $sanpham->drawNamSPCungLoaiHeader();
-                    
+                
+                   foreach ($sp as $lss) {
+                     $sl1 = $sanpham->DemLuotXem($lss);
+                    }
+                    $_SESSION['chitietluotxem']=$sl1;
                     foreach ($listSanpham as $spcl) {
                         echo $sanpham->drawNamSanPhamCungLoai($spcl);
                     }

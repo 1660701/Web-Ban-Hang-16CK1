@@ -31,6 +31,15 @@
         $thanhtien =0;
         $tongtien=0;
         $tongsoluong=0;
+        echo '<table>
+        <tr>
+        <th>Tên Sản Phẩm</th>
+        <th>Số Lượng</th>
+        <th>Giá</th>
+        <th>Tổng</th>
+        <th>Xóa Sản Phẩm</th>
+        </tr>
+        </table>';
         $count=0;
         foreach($_SESSION as $name => $value)
         {
@@ -47,6 +56,7 @@
                 
                     $sqldetail = "select * from sanpham where MaSP='$id'";
                     $result= mysqli_query($conn,$sqldetail);
+                   
                      
                     while($dong=mysqli_fetch_array($result))
                     {
@@ -56,13 +66,29 @@
                         $tongsoluong=$tongsoluong+$value;
                         
                
-                        echo '<br />'.$dong['TenSP'].' '.$value.'x'.$dong['Gia'].' tổng '.$tongtien.'<br/>
+                        echo '<table>
+                        
+                        <tr>
+                        <td>'.$dong['TenSP'].'</td>
+                        
+                        <td><a href="index.php?xem=giohang&id=1&tru='.$id.'">[-]</a>'
+                        .$value.'
                         <a href="index.php?xem=giohang&id=1&them='.$id.'">[+]</a>
-                        <a href="index.php?xem=giohang&id=1&tru='.$id.'">[-]</a>
-                        <a href="index.php?xem=giohang&id=1&delete='.$id.'">[delete]</a><br/>';
+                        </td>
+                        <td>'.$dong['Gia'].' </td> 
+                        <td>'.$tongtien.'</td>
+                       
+                        <td>
+                        <a href="index.php?xem=giohang&id=1&delete='.$id.'">[delete]</a></td>
+                        </tr>
+                        </table>';
                         for($i=0;$i<$count;$i++)
                         {
-                            $_SESSION['giohang'][$i]['tensp']=$dong['TenSP'];
+                            $_SESSION['giohang'][$i]['id']=$id;
+                            $_SESSION['giohang'][$i]['soluong']=$value;
+                            $_SESSION['giohang'][$i]['gia']=$dong['Gia'];
+                            
+
                         }
                     }
                 }
@@ -74,15 +100,15 @@
        
         if($thanhtien!=0)
             
-             echo 'Tổng Tiền :'.$thanhtien.' VNĐ <br/>';
+             echo '<table><tr><span class="ttt">Tổng Tiền :'.$thanhtien.' VNĐ</span></tr> </table>';
              $_SESSION["tongtien"]=$thanhtien;
              $_SESSION["sodong"]=$count;
-             echo $tongsoluong.'<br/>' ;
+        
              $_SESSION["soluong"]=$tongsoluong;
             
            
     }
 ?>
 <span style="float:right;"><a href="index.php?xem=thanhtoan&id=<?php echo @$_SESSION['dangnhap']?>">
-<input class="button" type="button" name="thanhtoan" id="thanhtoan" value="Tiến hành thanh toán"></></a>
+<input class="button" type="button" name="thanhtoan" id="thanhtoan" value="Tiến hành thanh toán"></td></a>
 </span>
