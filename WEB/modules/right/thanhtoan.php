@@ -6,39 +6,34 @@
     }
     else
     {
-       
+        $result= mysqli_query($conn,"INSERT into dathang(NguoiTao) values ('".$_SESSION['dangnhap']."')");
+    if($result)
+    {
+     for($i=0 ; $i< count($_SESSION['giohang']);$i++)
+      {
+          $sql= mysqli_query($conn,"SELECT max(ID) from dathang"); 
+          $row= mysqli_fetch_array($sql);
+          $card_id= $row[0];
+          $sanpham_id=  $_SESSION['giohang'][$i]['id'];
+          $soluong = $_SESSION['giohang'][$i]['soluong'];
+          $gia=$_SESSION['giohang'][$i]['gia'];
+          mysqli_query($conn,"INSERT into chitietdathang(DatHangID, MaSP, SoLuong, Gia) values ('".$card_id."'
+          ,'".$sanpham_id."','".$soluong."','".$gia."')");  
+      }
+     
+      unset($_SESSION['giohang']);
+      header('Location: index.php');
+      
+    }
+      
     }
     ?>
     <form action="" method="POST">
-    <table class="table1">
-    <tr>
-    <td>
-     <p> Địa chỉ giao Hàng:</p>
-     </td>
-     <td>
-      <input type="text" name="CD" value="<?php echo @$_SESSION['diachi'] ?>"> </td>
-     </tr>
-     <tr>
-     <td>
-     <p> Số điện thoại người nhận:</p></td>
-     <td>
-      <input type="text" name="DT" value="<?php echo @$_SESSION['sodienthoai'] ?>"></td>
-     </tr>
-    <tr>
-    <td>
-    <p>Tổng Hóa Đơn:</p></td>
-    <td>
-     <?php echo @$_SESSION['tongtien']?> VNĐ 
-     </td>
-     </tr>
-    </table>
-    <span style="float:right;"><a href="index.php">
-    <input class="button" type="submit" name="dathang" value="Đặt Hàng" ></a></span>
+     <p> Địa chỉ giao Hàng: <input type="text" name="CD" value="<?php echo @$_SESSION['diachi'] ?>"> 
+     <p> Số điện thoại người nhận: <input type="text" name="DT" value="<?php echo @$_SESSION['sodienthoai'] ?>"> 
+
+    <p>Tổng Hóa Đơn: <?php echo @$_SESSION['tongtien']?> VNĐ </p>
+    <span style="float:right;"><a href="index.php?xem=dathang&id=">
+    <input type="submit" name="dathang" value="Đặt Hàng" ></span>
     </form>
-    <?php
-     if(isset($_GET['thanhtoan']))
-     {
-         unset($_SESSION['giohang']);
-         header('location:index.php');
-     }
-    ?>
+    
